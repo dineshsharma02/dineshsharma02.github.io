@@ -1,664 +1,1087 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dinesh Sharma</title>
-    <link rel="shortcut icon" href="images/dinesh_prof_pic-removebg-preview-removebg-preview.jpg" type="image/x-icon">
-    <!-- <link rel="stylesheet" href="themes/bootstrap.min.css" /> -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="stylesheet" id="switcher-id" href="themes/bootstrap.min.css"/>
-    <link rel="stylesheet" href="css/style.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dinesh Sharma — Full-Stack Developer</title>
+  <link rel="shortcut icon" href="images/dinesh_prof_pic-removebg-preview-removebg-preview.jpg" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ========== DESIGN TOKENS ========== */
+    :root {
+      --ink: #0a0a0a;
+      --white: #fafafa;
+      --accent: #c8ff00;
+      --muted: #888;
+      --border: #222;
+      --card-bg: #111;
+      --mid: #333;
+      --font-display: 'Syne', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-body: 'DM Sans', sans-serif;
+      --hero-size: clamp(3.5rem, 7vw, 6.5rem);
+      --section-title: clamp(2rem, 4vw, 3rem);
+      --body-size: 1rem;
+      --label-size: 0.7rem;
+      --letter-spacing-nav: 0.04em;
+      --section-padding: clamp(3rem, 8vw, 6rem);
+      --card-padding: 1.5rem;
+      --grid-gap: 1px;
+      --duration: 0.6s;
+      --ease: cubic-bezier(0.4, 0, 0.2, 1);
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    }
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-      crossorigin="anonymous"
-    ></script>
-    
-    <script src="js/theme/theme.js"></script>
-    <script src="js/main.js"></script>
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.js"
-      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
-  </head>
-  <body>
-    <!-- navbar  -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <!-- <a class="navbar-brand" href="#">Dinesh</a> -->
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarColor03"
-          aria-controls="navbarColor03"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+    /* ========== RESET & BASE ========== */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--ink);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      font-weight: 400;
+      font-stretch: normal;
+      line-height: 1.6;
+      letter-spacing: 0.01em;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; height: auto; display: block; }
+    ul { list-style: none; margin: 0; padding: 0; }
 
-        <div class="collapse navbar-collapse" id="navbarColor03">
-          <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-              <a class="nav-link active" href="#"
-                >Home
-                <span class="visually-hidden">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#education">Education</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#skills">Skills</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#projects">Projects</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#achievements">Achievements</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#contactme">Contact</a>
-            </li>
-          </ul>
-        </div>
+    /* ========== NAVIGATION ========== */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--white);
+    }
+    .nav-logo .accent { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: var(--label-size);
+      letter-spacing: var(--letter-spacing-nav);
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color var(--duration) var(--ease);
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta {
+      font-family: var(--font-mono);
+      font-size: var(--label-size);
+      letter-spacing: var(--letter-spacing-nav);
+      text-transform: uppercase;
+      padding: 0.5rem 1rem;
+      background: var(--accent);
+      color: var(--ink);
+      border: none;
+      cursor: pointer;
+      transition: opacity var(--duration) var(--ease), transform var(--duration) var(--ease);
+    }
+    .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--white);
+      padding: 0.5rem;
+      cursor: pointer;
+      font-family: var(--font-mono);
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--section-padding) 2rem;
+      min-height: 85vh;
+    }
+    .hero-left { }
+    .hero-status {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: var(--font-mono);
+      font-size: var(--label-size);
+      letter-spacing: var(--letter-spacing-nav);
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+    .hero-status::before {
+      content: '';
+      width: 24px;
+      height: 2px;
+      background: var(--accent);
+    }
+    .hero-name {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: var(--hero-size);
+      line-height: 1.05;
+      margin: 0 0 0.25rem 0;
+      color: var(--white);
+    }
+    .hero-name-outline {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: var(--hero-size);
+      line-height: 1.05;
+      margin: 0 0 1rem 0;
+      color: transparent;
+      -webkit-text-stroke: 1px var(--white);
+    }
+    .hero-bio {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 1.125rem;
+      color: var(--muted);
+      max-width: 32ch;
+      margin-bottom: 2rem;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .btn-primary {
+      font-family: var(--font-mono);
+      font-size: var(--label-size);
+      letter-spacing: var(--letter-spacing-nav);
+      text-transform: uppercase;
+      padding: 0.75rem 1.5rem;
+      background: var(--accent);
+      color: var(--ink);
+      border: none;
+      cursor: pointer;
+      transition: opacity var(--duration) var(--ease), transform var(--duration) var(--ease);
+    }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
+    .btn-ghost {
+      font-family: var(--font-mono);
+      font-size: var(--label-size);
+      letter-spacing: var(--letter-spacing-nav);
+      text-transform: uppercase;
+      padding: 0.75rem 1.5rem;
+      background: transparent;
+      color: var(--white);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: border-color var(--duration) var(--ease), color var(--duration) var(--ease);
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: var(--label-size);
+      letter-spacing: var(--letter-spacing-nav);
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .hero-image-wrap {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .hero-image-wrap img {
+      width: 100%;
+      max-width: 320px;
+      aspect-ratio: 1;
+      object-fit: cover;
+      filter: grayscale(0.4);
+    }
+    .hero-image-footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0.75rem 1rem;
+      background: linear-gradient(transparent, rgba(0,0,0,0.9));
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: var(--letter-spacing-nav);
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .pulse-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .terminal-card {
+      width: 100%;
+      max-width: 340px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      line-height: 1.7;
+      overflow-x: auto;
+    }
+    .terminal-card pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .terminal-card .key { color: var(--accent); }
+    .terminal-card .string { color: #98c379; }
+    .terminal-card .bracket { color: var(--muted); }
+
+    /* ========== MARQUEE ========== */
+    .marquee-wrap {
+      background: var(--card-bg);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .marquee {
+      display: flex;
+      width: max-content;
+      animation: marquee 40s linear infinite;
+    }
+    .marquee span {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(0.85rem, 1.5vw, 1rem);
+      text-transform: uppercase;
+      letter-spacing: var(--letter-spacing-nav);
+      color: var(--white);
+      padding: 1rem 1.5rem;
+      white-space: nowrap;
+    }
+    .marquee .sep { color: var(--accent); padding: 0 0.25rem; }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ========== SECTION COMMON ========== */
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--section-padding) 2rem;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .section-num {
+      font-family: var(--font-mono);
+      font-size: var(--label-size);
+      letter-spacing: var(--letter-spacing-nav);
+      color: var(--accent);
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: var(--section-title);
+      margin: 0;
+    }
+    .section-header hr {
+      flex: 1;
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+    /* ========== ABOUT ========== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 3rem;
+      align-items: start;
+    }
+    .about-bio p {
+      font-family: var(--font-body);
+      font-weight: 300;
+      color: var(--muted);
+      margin: 0 0 1.25rem 0;
+    }
+    .about-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .about-row {
+      padding: 0.75rem 1rem;
+      border-left: 2px solid var(--border);
+      transition: border-color var(--duration) var(--ease);
+    }
+    .about-row:hover { border-left-color: var(--accent); }
+    .about-row .label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: var(--letter-spacing-nav);
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+    .about-row .value {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .about-row .value.accent { color: var(--accent); }
+
+    /* ========== SKILLS (TECH STACK) ========== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--grid-gap);
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+    .skill-cell {
+      background: var(--card-bg);
+      padding: var(--card-padding);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .skill-cell .icon { font-size: 1.5rem; color: var(--accent); }
+    .skill-cell .name { font-family: var(--font-display); font-weight: 700; font-size: 1rem; }
+    .skill-cell .level {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+    .skill-bar-wrap {
+      height: 4px;
+      background: var(--mid);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .skill-bar {
+      height: 100%;
+      width: 0;
+      background: var(--accent);
+      border-radius: 2px;
+      transition: width 1s var(--ease-out);
+    }
+    .skill-cell.visible .skill-bar { width: var(--skill-width, 0); }
+
+    /* ========== PROJECTS ========== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: var(--card-padding);
+      transition: transform var(--duration) var(--ease), border-color var(--duration) var(--ease);
+      display: block;
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+    }
+    .project-num {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .project-card h3 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.25rem;
+      margin: 0 0 0.5rem 0;
+    }
+    .project-card .desc {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .project-tags span {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      padding: 0.25rem 0.5rem;
+      background: var(--mid);
+      border-radius: 4px;
+      color: var(--muted);
+    }
+    .project-link {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: gap var(--duration) var(--ease);
+    }
+    .project-card:hover .project-link { gap: 0.75rem; }
+
+    /* ========== ACHIEVEMENTS ========== */
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--grid-gap);
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+    .achievement-cell {
+      background: var(--card-bg);
+      padding: var(--card-padding);
+      position: relative;
+      display: block;
+      transition: border-color var(--duration) var(--ease);
+    }
+    .achievement-cell:hover { border-color: var(--accent); }
+    .achievement-cell .index {
+      font-family: var(--font-mono);
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--border);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .achievement-cell .title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+    .achievement-cell .sub {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    /* ========== EDUCATION ========== */
+    .edu-timeline { }
+    .edu-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 2rem;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .edu-row:last-child { border-bottom: none; }
+    .edu-year {
+      font-family: var(--font-mono);
+      font-size: var(--label-size);
+      letter-spacing: var(--letter-spacing-nav);
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .edu-school { font-family: var(--font-display); font-weight: 800; font-size: 1rem; margin: 0 0 0.25rem 0; }
+    .edu-degree { font-family: var(--font-body); font-weight: 300; font-size: 0.9rem; color: var(--muted); margin: 0; }
+
+    /* ========== CONTACT ========== */
+    .contact-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--section-padding) 2rem;
+    }
+    .contact-headline {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 1.1;
+      margin: 0 0 1rem 0;
+    }
+    .contact-headline .outline {
+      color: transparent;
+      -webkit-text-stroke: 1px var(--white);
+    }
+    .contact-sub {
+      font-family: var(--font-body);
+      font-weight: 300;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      max-width: 36ch;
+    }
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .contact-link-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      margin-bottom: 0.5rem;
+      transition: border-color var(--duration) var(--ease), color var(--duration) var(--ease);
+      text-decoration: none;
+      color: var(--white);
+    }
+    .contact-link-row:hover { border-color: var(--accent); color: var(--accent); }
+    .contact-link-row span {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+    }
+    .contact-form-wrap {
+      grid-column: 1 / -1;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .contact-form-wrap h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin: 0 0 1.5rem 0;
+    }
+    .contact-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 600px) {
+      .contact-form-grid { grid-template-columns: 1fr; }
+    }
+    .contact-form .form-group {
+      margin-bottom: 0;
+    }
+    .contact-form label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: var(--letter-spacing-nav);
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--white);
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      transition: border-color var(--duration) var(--ease);
+    }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: var(--muted);
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .contact-form textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+    .contact-form .form-row-full {
+      grid-column: 1 / -1;
+    }
+    .contact-form .btn-submit {
+      font-family: var(--font-mono);
+      font-size: var(--label-size);
+      letter-spacing: var(--letter-spacing-nav);
+      text-transform: uppercase;
+      padding: 0.75rem 1.5rem;
+      background: var(--accent);
+      color: var(--ink);
+      border: none;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: opacity var(--duration) var(--ease), transform var(--duration) var(--ease);
+    }
+    .contact-form .btn-submit:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-left {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: var(--letter-spacing-nav);
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .footer-right {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: var(--letter-spacing-nav);
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .footer-right .pulse-dot { margin: 0; }
+
+    /* ========== FADE-IN ANIMATIONS ========== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========== MOBILE ========== */
+    @media (max-width: 900px) {
+      .nav { position: relative; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        width: 100%;
+        flex-direction: column;
+        background: rgba(10, 10, 10, 0.98);
+        backdrop-filter: blur(12px);
+        padding: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav.open .nav-links { display: flex; }
+      .nav-toggle { display: block; }
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-left { order: 1; }
+      .hero-right { order: 0; }
+      .hero-bio { margin-left: auto; margin-right: auto; }
+      .hero-ctas { justify-content: center; }
+      .hero-stats { justify-content: center; }
+      .hero-right .terminal-card,
+      .hero-image-wrap { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .projects-grid { grid-template-columns: 1fr; }
+      .achievements-grid { grid-template-columns: 1fr; }
+      .edu-row {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+      }
+      .edu-year { order: 0; }
+      .contact-section { grid-template-columns: 1fr; text-align: center; }
+      .contact-sub { margin-left: auto; margin-right: auto; }
+      .footer {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 375px) {
+      .hero-stats { flex-direction: column; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav" id="mainNav">
+    <a href="#" class="nav-logo">DS<span class="accent">.</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button type="button" class="nav-toggle" aria-label="Toggle menu" id="navToggle" aria-expanded="false">Menu</button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <!-- <p class="hero-status fade-in">Available for opportunities</p> -->
+      <h1 class="hero-name fade-in">Dinesh</h1>
+      <h1 class="hero-name-outline fade-in">Sharma</h1>
+      <p class="hero-bio fade-in">Full-Stack Developer — Python, Django, React, Next.js, PostgreSQL. I build scalable systems and ship products that users love.</p>
+      <div class="hero-ctas fade-in">
+        <a href="#projects" class="btn-primary">View Work</a>
+        <a href="#contact" class="btn-ghost">Get in Touch</a>
       </div>
-    </nav>
-
-    <!-- themeswitches  -->
-    <br />
-    <div class="theme-switches">
-      <div data-theme="light" id="switch-1" class="switch"></div>
-
-      <div data-theme="sky" class="switch" id="switch-2"></div>
-
-      <div data-theme="purple" class="switch" id="switch-3"></div>
-
-      <div data-theme="dark" class="switch" id="switch-4"></div>
+      <div class="hero-stats fade-in">
+        <span>3 years building</span>
+        <span>8+ projects shipped</span>
+        <span>5★ HackerRank Java</span>
+      </div>
     </div>
-
-    <!-- home  -->
-    <br /><br /><br />
-
-    <section class="site-banner">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 profile-column mb-2">
-            <img
-              class="profile_image"
-              src="images/dinesh_prof_pic-removebg-preview-removebg-preview.jpg"
-              alt="banner-img"
-              class="img-fluid"
-            />
-          </div>
-
-          <!--   -->
-          <div class="col-lg-6 site-title mb-2">
-            <h3 class="title-text mb-2" style="font-size: 45px">Hey</h3>
-            <h1 class="title-text mb-1text-uppercase" style="font-size: 65px">
-              I am Dinesh
-            </h1>
-            <h4 class="title-text mb-2 text-uppercase" style="font-size: 25px">
-              Full stack web developer
-            </h4>
-            <div class="site-buttons mt-4">
-              <div class="d-flex flex-row flex-wrap">
-                <!-- <div class="row"> -->
-                <!-- <div class="col-md-12"> -->
-                <a
-                  href="#contactme"
-                  class="btn btn-primary text-uppercase inline"
-                  >Contact</a
-                >
-                <!-- </div> -->
-                <!-- <div class="col-md-12"> -->
-                <a
-                  href="Dinesh_resume.pdf"
-                  class="btn btn-info text-uppercase inline"
-                  target="_blank"
-                  >get cv</a
-                >
-                <!-- </div> -->
-                <!-- </div> -->
-              </div>
-            </div>
-          </div>
+    <div class="hero-right">
+      <div class="hero-image-wrap fade-in">
+        <img src="images/dinesh_pic.png" alt="Dinesh Sharma" />
+        <div class="hero-image-footer">
+          <!-- <span class="pulse-dot"></span> -->
         </div>
       </div>
-    </section>
-    <br /><br /><br /><br />
-
-    <!-- about me  -->
-
-    <section class="mt-5" id="about">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="about-image">
-              <img src="images/about-us.png" alt="About us" class="img-fluid" />
-            </div>
-          </div>
-          <div class="col-lg-6 col-md-12 about-title">
-            <h2 class="text-uppercase pt-5">
-              <span>Let me</span>
-              <span>introduce</span>
-              <span>myself</span>
-            </h2>
-            <div class="paragraph py-4 w-75">
-              <p class="para">
-                A passionate Full-Stack Developer with a knack for turning ideas into seamless web applications. With a solid foundation in JavaScript, Django, and React, I've built efficient, scalable solutions that drive user engagement. Whether it's tackling backend challenges or crafting smooth front-end experiences, I love solving complex problems and delivering high-quality results.
-              </p>
-            </div>
-            <a
-              href="Dinesh_resume.pdf"
-              target="_blank"
-              class="btn btn-primary text-uppercase"
-              >Download cv</a
-            >
-          </div>
-        </div>
+      <div class="terminal-card fade-in">
+        <pre><code><span class="bracket">{</span>
+  <span class="key">stack</span>: [<span class="string">"Python"</span>, <span class="string">"Django"</span>, <span class="string">"React"</span>, <span class="string">"Next.js"</span>],
+  <span class="key">db</span>: [<span class="string">"PostgreSQL"</span>, <span class="string">"MongoDB"</span>],
+  <span class="key">focus</span>: <span class="string">"Full-stack & system design"</span>
+<span class="bracket">}</span></code></pre>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Education section  -->
-    <section class="mt-5">
-      <div class="container" id="education">
-        <h2>Education <i class="fas fa-user-graduate"></i></h2>
-        <br />
-        <div class="row">
-          <div class="col-md-4 mb-2">
-            <div class="card" style="width: 18rem; height: 550px">
-              <img
-                class="card-img-top"
-                src="images/vit_logo.jpg"
-                alt="Card image cap"
-              />
-              <div class="card-body text-center">
-                <h4 class="card-title">Vellore Institute of Technology</h4>
-                <p class="card-text">
-                  Engineering at VIT is not only study of 45 subjects but it is
-                  moral studies of intellectual life.
-                </p>
-                <a class="link-text" href="https://vit.ac.in/">
-                  <h5>About VIT <i class="fab fa-readme"></i></h5>
-                </a>
-              </div>
-            </div>
-          </div>
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee">
+      <span>Django</span><span class="sep">✦</span><span>React</span><span class="sep">✦</span><span>Python</span><span class="sep">✦</span><span>PostgreSQL</span><span class="sep">✦</span><span>JavaScript</span><span class="sep">✦</span><span>Next.js</span><span class="sep">✦</span><span>FastAPI</span><span class="sep">✦</span><span>Docker</span><span class="sep">✦</span><span>RAG</span><span class="sep">✦</span><span>System Design</span><span class="sep">✦</span>
+      <span>Django</span><span class="sep">✦</span><span>React</span><span class="sep">✦</span><span>Python</span><span class="sep">✦</span><span>PostgreSQL</span><span class="sep">✦</span><span>JavaScript</span><span class="sep">✦</span><span>Next.js</span><span class="sep">✦</span><span>FastAPI</span><span class="sep">✦</span><span>Docker</span><span class="sep">✦</span><span>RAG</span><span class="sep">✦</span><span>System Design</span><span class="sep">✦</span>
+    </div>
+  </div>
 
-          <div class="col-md-4 mb-2">
-            <div class="card" style="width: 18rem; height: 550px">
-              <img
-                class="card-img-top"
-                src="images/bps-logo.jpg"
-                alt="Card image cap"
-              />
-              <div class="card-body text-center">
-                <h4 class="card-title">Bhartiya Public School</h4>
-                <p class="card-text">
-                  People Just Don’t Know It Yet But School Is One Of The Best
-                  Places In This Planet To Exist Peacefully.
-                </p>
-                <a class="link-text" href="http://bpssikar.org/">
-                  <h5>About Bhartiya <i class="fab fa-readme"></i></h5>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 mb-2">
-            <div class="card" style="width: 18rem; height: 550px">
-              <img
-                class="card-img-top"
-                src="images/allen-logo.jpg"
-                alt="Card image cap"
-              />
-              <div class="card-body text-center">
-                <h4 class="card-title">Allen Carrer Institute,Kota</h4>
-                <p class="card-text">
-                  At Allen We Got To Know The Distance Between Dreams And
-                  Reality is Called Action.
-                </p>
-                <a class="link-text" href="https://www.allen.ac.in/">
-                  <h5>About Allen<i class="fab fa-readme"></i></h5>
-                </a>
-              </div>
-            </div>
-          </div>
-          <!-- <div class="col-md-4">
-          <div class="card-wrapper">
-            <div id="card-2" class="card card-rotating text-center">
-              Front Side
-              <div class="face front">
-                Image
-                <div class="view overlay">
-                  <img
-                    class="card-img-top"
-                    src="images/vit_logo.jpg"
-                    alt="Example photo"
-                  />
-                  <a>
-                    <div class="mask rgba-white-slight"></div>
-                  </a>
-                </div>
-
-                Content
-                <div class="card-body">
-                  <h4 class="">Vellore Institute of Technology</h4>
-                  <p class="card-text">
-                    Engineering is not only study of 45 subjects but it is moral
-                    studies of intellectual life.
-                  </p>
-                  <a class="link-text" href="https://vit.ac.in/">
-                    <h5>Read more <i class="fab fa-readme"></i></h5>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <header class="section-header fade-in">
+      <span class="section-num">01</span>
+      <h2 class="section-title">About</h2>
+      <hr />
+    </header>
+    <div class="about-grid">
+      <div class="about-bio fade-in">
+        <p>I'm a Full-Stack Developer with 3 years building production systems. I've architected low-code platforms, migrated stacks to custom Django + PostgreSQL, and shipped features that cut onboarding time and manual work for enterprise teams.</p>
+        <p>I focus on clean architecture, tenant-aware data isolation, and event-driven systems. From RAG pipelines and real-time collaboration to REST APIs and admin tooling, I own the full cycle from design to deploy.</p>
+        <p>I've led technical direction for small teams and care about code quality, system design, and outcomes—not just tickets. Always up for hard problems and new stacks.</p>
+      </div>
+      <aside class="about-sidebar fade-in">
+        <div class="about-row">
+          <div class="label">Location</div>
+          <div class="value">Bengaluru, India</div>
+        </div>
+        <div class="about-row">
+          <div class="label">University</div>
+          <div class="value">VIT Vellore</div>
+        </div>
+        <div class="about-row">
+          <div class="label">Specialisation</div>
+          <div class="value">Computer Science & Engineering</div>
+        </div>
+        <div class="about-row">
+          <div class="label">Primary Stack</div>
+          <div class="value">Django, React, PostgreSQL, Python</div>
+        </div>
+        <!-- <div class="about-row">
+          <div class="label">Status</div>
+          <div class="value accent"></div>
         </div> -->
+      </aside>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section" id="skills">
+    <header class="section-header fade-in">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Tech Stack</h2>
+      <hr />
+    </header>
+    <div class="skills-grid" id="skillsGrid">
+      <div class="skill-cell fade-in" data-skill="88">
+        <span class="icon">◆</span>
+        <span class="name">Django</span>
+        <span class="level">88%</span>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="--skill-width: 88%"></div></div>
+      </div>
+      <div class="skill-cell fade-in" data-skill="92">
+        <span class="icon">◆</span>
+        <span class="name">JavaScript</span>
+        <span class="level">92%</span>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="--skill-width: 92%"></div></div>
+      </div>
+      <div class="skill-cell fade-in" data-skill="90">
+        <span class="icon">◆</span>
+        <span class="name">React</span>
+        <span class="level">90%</span>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="--skill-width: 90%"></div></div>
+      </div>
+      <div class="skill-cell fade-in" data-skill="85">
+        <span class="icon">◆</span>
+        <span class="name">Python</span>
+        <span class="level">85%</span>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="--skill-width: 85%"></div></div>
+      </div>
+      <div class="skill-cell fade-in" data-skill="83">
+        <span class="icon">◆</span>
+        <span class="name">Java</span>
+        <span class="level">83%</span>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="--skill-width: 83%"></div></div>
+      </div>
+      <div class="skill-cell fade-in" data-skill="72">
+        <span class="icon">◆</span>
+        <span class="name">.NET</span>
+        <span class="level">72%</span>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="--skill-width: 72%"></div></div>
+      </div>
+      <div class="skill-cell fade-in" data-skill="82">
+        <span class="icon">◆</span>
+        <span class="name">SQL</span>
+        <span class="level">82%</span>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="--skill-width: 82%"></div></div>
+      </div>
+      <div class="skill-cell fade-in" data-skill="95">
+        <span class="icon">◆</span>
+        <span class="name">HTML/CSS</span>
+        <span class="level">95%</span>
+        <div class="skill-bar-wrap"><div class="skill-bar" style="--skill-width: 95%"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <header class="section-header fade-in">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Projects</h2>
+      <hr />
+    </header>
+    <div class="projects-grid">
+      <a href="http://expenseviewerapp.herokuapp.com/" class="project-card fade-in" target="_blank" rel="noopener">
+        <span class="project-num">001</span>
+        <h3>WealthWise</h3>
+        <p class="desc">Expense and income manager to track accounts and spending.</p>
+        <div class="project-tags">
+          <span>Django</span><span>React</span><span>PostgreSQL</span>
+        </div>
+      </a>
+      <a href="#" class="project-card fade-in" target="_blank" rel="noopener">
+        <span class="project-num">002</span>
+        <h3>DialogBox</h3>
+        <p class="desc">Multi-tenant AI chatbot platform with RAG, low-code workflows, and analytics.</p>
+        <div class="project-tags">
+          <span>Django</span><span>FastAPI</span><span>RAG</span><span>SaaS</span>
+        </div>
+      </a>
+      <a href="#" class="project-card fade-in" target="_blank" rel="noopener">
+        <span class="project-num">003</span>
+        <h3>EduSupply</h3>
+        <p class="desc">Stock management platform for government school Mid Day Meal distribution.</p>
+        <div class="project-tags">
+          <span>Django</span><span>ML</span><span>Gov Tech</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section class="section" id="achievements">
+    <header class="section-header fade-in">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Achievements</h2>
+      <hr />
+    </header>
+    <div class="achievements-grid">
+      <a href="https://www.udemy.com/certificate/UC-0dbe23d9-ed04-47a6-9cc9-9e9b3a0c8839/" class="achievement-cell fade-in" target="_blank" rel="noopener">
+        <span class="index">01</span>
+        <span class="title">Python Certification</span>
+        <span class="sub">Udemy</span>
+      </a>
+      <a href="https://www.udemy.com/certificate/UC-848cab8f-821a-48e8-8698-7981d0bafa2f/" class="achievement-cell fade-in" target="_blank" rel="noopener">
+        <span class="index">02</span>
+        <span class="title">Django Certification</span>
+        <span class="sub">Udemy</span>
+      </a>
+      <a href="https://www.hackerrank.com/dineshsharma02" class="achievement-cell fade-in" target="_blank" rel="noopener">
+        <span class="index">03</span>
+        <span class="title">5-Star Java Developer</span>
+        <span class="sub">HackerRank</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="section" id="education">
+    <header class="section-header fade-in">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Education</h2>
+      <hr />
+    </header>
+    <div class="edu-timeline">
+      <div class="edu-row fade-in">
+        <span class="edu-year">2019 – 2023</span>
+        <div>
+          <h3 class="edu-school">Vellore Institute of Technology (VIT)</h3>
+          <p class="edu-degree">Bachelor of Technology, Computer Science and Engineering</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Skills -->
-    <section class="mt-5">
-      <div class="container" id="skills">
-        <h2>Skills<i class="fas fa-tools"></i></h2>
-
-        <label for="">Django</label>
-        <div class="progress m-2">
-          <div
-            class="progress-bar progress-bar-striped progress-bar-animated"
-            role="progressbar"
-            aria-valuenow="85"
-            aria-valuemin="0"
-            aria-valuemax="100"
-            style="width: 85%"
-          ></div>
-        </div>
-        <label for="">HTML</label>
-        <div class="progress m-2">
-          <div
-            class="progress-bar progress-bar-striped progress-bar-animated"
-            role="progressbar"
-            aria-valuenow="80"
-            aria-valuemin="0"
-            aria-valuemax="100"
-            style="width: 80%"
-          ></div>
-        </div>
-        <label for="">CSS</label>
-        <div class="progress m-2">
-          <div
-            class="progress-bar progress-bar-striped progress-bar-animated"
-            role="progressbar"
-            aria-valuenow="75"
-            aria-valuemin="0"
-            aria-valuemax="100"
-            style="width: 75%"
-          ></div>
-        </div>
-        <label for="">JavaScript</label>
-        <div class="progress m-2">
-          <div
-            class="progress-bar progress-bar-striped progress-bar-animated"
-            role="progressbar"
-            aria-valuenow="80"
-            aria-valuemin="0"
-            aria-valuemax="100"
-            style="width: 80%"
-          ></div>
-        </div>
-        <label for="">React.js</label>
-        <div class="progress m-2">
-          <div
-            class="progress-bar progress-bar-striped progress-bar-animated"
-            role="progressbar"
-            aria-valuenow="80"
-            aria-valuemin="0"
-            aria-valuemax="100"
-            style="width: 80%"
-          ></div>
-        </div>
-        <label for="">Python</label>
-        <div class="progress m-2">
-          <div
-            class="progress-bar progress-bar-striped progress-bar-animated"
-            role="progressbar"
-            aria-valuenow="90"
-            aria-valuemin="0"
-            aria-valuemax="100"
-            style="width: 90%"
-          ></div>
-        </div>
-        <label for="">.NET</label>
-        <div class="progress m-2">
-          <div
-            class="progress-bar progress-bar-striped progress-bar-animated"
-            role="progressbar"
-            aria-valuenow="60"
-            aria-valuemin="0"
-            aria-valuemax="100"
-            style="width: 60%"
-          ></div>
-        </div>
-        <label for="">Java</label>
-        <div class="progress m-2">
-          <div
-            class="progress-bar progress-bar-striped progress-bar-animated"
-            role="progressbar"
-            aria-valuenow="80"
-            aria-valuemin="0"
-            aria-valuemax="100"
-            style="width: 80%"
-          ></div>
-        </div>
-        <label for="">SQL</label>
-        <div class="progress m-2">
-          <div
-            class="progress-bar progress-bar-striped progress-bar-animated"
-            role="progressbar"
-            aria-valuenow="60"
-            aria-valuemin="0"
-            aria-valuemax="100"
-            style="width: 60%"
-          ></div>
-        </div>
-
-        
-      </div>
-    </section>
-
-    <hr />
-
-    <!-- Projects -->
-    <section id="projects" class="mt-5">
-      <div class="container">
-        <div class="project-title pb-5">
-          <h2 class="text-uppercase title-h1">
-            Recently done Projects<i class="far fa-file-code"></i>
-          </h2>
-          <!-- <h1 class="text-uppercase title-h1">Quality Work</h1> -->
-        </div>
-
-        <div class="row grid">
-          <div class="col-lg-4 col-md-6 col-sm-12 element-item latest">
-            <div class="our-project">
-              <div class="img hover-zoom hover01">
-                <figure>
-                  <a
-                    class="test-popup-link"
-                    href="http://expenseviewerapp.herokuapp.com/"
-                  >
-                  <span data-tilt>
-                    <img
-                      src="expenseswebsite/banner.png"
-                      alt="portfolio-1"
-                      class="img-fluid"
-                    />
-                  </span>
-                  </a>
-                </figure>
-              </div>
-              <div class="title py-4">
-                <h4 class="text-uppercase">WealthWise</h4>
-                <span class="text-secondary"
-                  >Solution to manage all your expenses and income
-                  accounts.</span
-                >
-              </div>
-            </div>
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="contact-left fade-in">
+      <h2 class="contact-headline">Let's <span class="outline">Build</span> Together.</h2>
+      <p class="contact-sub">Have a product in mind or want to collaborate? I'd love to hear from you. Drop a line below.</p>
+    </div>
+    <div class="contact-links fade-in">
+      <a href="https://github.com/dineshsharma02" class="contact-link-row" target="_blank" rel="noopener"><span>GitHub</span><span>→</span></a>
+      <a href="https://www.linkedin.com/in/dinesh02/" class="contact-link-row" target="_blank" rel="noopener"><span>LinkedIn</span><span>→</span></a>
+      <a href="https://leetcode.com/u/dinesh02/" class="contact-link-row" target="_blank" rel="noopener"><span>LeetCode</span><span>→</span></a>
+    </div>
+    <div class="contact-form-wrap fade-in">
+      <h3>Drop me a message</h3>
+      <form class="contact-form" action="https://formsubmit.co/contact.dinesh02@gmail.com" method="POST">
+        <div class="contact-form-grid">
+          <div class="form-group">
+            <label for="contact-name">Name *</label>
+            <input type="text" id="contact-name" name="Name" required placeholder="Your name" />
           </div>
-          
-          <div class="col-lg-4 col-md-6 col-sm-12 element-item popular">
-            <div class="our-project">
-              <div class="img hover-zoom">
-                
-                <a
-                  class="test-popup-link"
-                  href="https://github.com/dineshsharma02/to-do-app"
-                >
-                  <img
-                    src="todo screenshots/tasklist.png"
-                    alt="portfolio-2"
-                    class="img-fluid"
-                  />
-                </a>
-              
-              </div>
-              <div class="title py-4">
-                <h4 class="text-uppercase">To-Do Website</h4>
-                <span class="text-secondary"
-                  >Django app to manage your daily tasks.</span
-                >
-              </div>
-            </div>
+          <div class="form-group">
+            <label for="contact-email">Email *</label>
+            <input type="email" id="contact-email" name="Email" required placeholder="your@email.com" />
           </div>
-          <div class="col-lg-4 col-md-6 col-sm-12 element-item popular">
-            <div class="our-project">
-              <div class="img hover-zoom">
-                
-                <a
-                  class="test-popup-link"
-                  href="http://weatherscene.herokuapp.com/"
-                >
-                  <img
-                    src="images/weatherapp.PNG"
-                    alt="portfolio-2"
-                    class="img-fluid"
-                  />
-                </a>
-              
-              </div>
-              <div class="title py-4">
-                <h4 class="text-uppercase">Weather Scene</h4>
-                <span class="text-secondary"
-                  >Api based django web app to check weather of different cities.</span
-                >
-              </div>
-            </div>
+          <div class="form-group">
+            <label for="contact-phone">Phone *</label>
+            <input type="text" id="contact-phone" name="Phone" required placeholder="Your phone" />
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Achievements -->
-    <section class="mt-5">
-      <div class="container" id="achievements">
-        <div class="project-title pb-5">
-          <h1 class="text-uppercase title-h1">
-            Achievements<i class="fas fa-medal"></i>
-          </h1>
-        </div>
-
-        <div class="row grid">
-          <div class="col-lg-4 col-md-6 col-sm-12 element-item latest">
-            <div class="our-project">
-              <div class="img hover-zoom">
-                <a
-                  class="test-popup-link"
-                  href="https://www.udemy.com/certificate/UC-0dbe23d9-ed04-47a6-9cc9-9e9b3a0c8839/"
-                  target="_blank"
-                >
-                  <img
-                    src="images/udemy_logo.png"
-                    width="300px"
-                    alt="portfolio-1"
-                    class="img-fluid"
-                  />
-                </a>
-              </div>
-              <div class="title py-4">
-                <h4 class="text-uppercase">
-                  Certification in Python Developement
-                </h4>
-                <span class="text-secondary"></span>
-              </div>
-            </div>
+          <div class="form-group form-row-full">
+            <label for="contact-msg">Message *</label>
+            <textarea id="contact-msg" name="Msg" required placeholder="Your message"></textarea>
           </div>
-          <div class="col-lg-4 col-md-6 col-sm-12 element-item popular">
-            <div class="our-project">
-              <div class="img hover-zoom">
-                <a
-                  class="test-popup-link"
-                  href="https://www.hackerrank.com/dineshsharma02"
-                  target="_blank"
-                >
-                  <img
-                    src="images/hackerrank-logo.png"
-                    width="300px"
-                    alt="portfolio-2"
-                    class="img-fluid"
-                  />
-                </a>
-              </div>
-              <div class="title py-4">
-                <h4 class="text-uppercase">HackerRank 5 star java developer</h4>
-                <span class="text-secondary"></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-12 element-item popular">
-            <div class="our-project">
-              <div class="img hover-zoom">
-                <a
-                  class="test-popup-link"
-                  href="https://www.udemy.com/certificate/UC-848cab8f-821a-48e8-8698-7981d0bafa2f/"
-                  target="_blank"
-                >
-                  <img
-                    src="images/udemy_logo.png"
-                    width="300px"
-                    alt="portfolio-2"
-                    class="img-fluid"
-                  />
-                </a>
-              </div>
-              <div class="title py-4">
-                <h4 class="text-uppercase">
-                  Certification in Django Developement
-                </h4>
-                <span class="text-secondary"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- dummy  -->
-
-    <!-- contact me form  -->
-    <div class="container contact-form" id="contactme">
-      <!-- <div class="contact-image">
-          <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact"/>
-      </div> -->
-
-      <form
-        action="https://formsubmit.co/itsdinesh02@gmail.com"
-        method="POST"
-        style="width: 100%"
-      >
-        <h3>Drop Me a Message</h3>
-
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <input
-                type="text"
-                name="Name"
-                required
-                class="form-control"
-                placeholder="Your Name *"
-                value=""
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="text"
-                name="Email"
-                required
-                class="form-control"
-                placeholder="Your Email *"
-                value=""
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="text"
-                name="Phone"
-                required
-                class="form-control"
-                placeholder="Your Phone Number *"
-                value=""
-              />
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <textarea
-                name="Msg"
-                required
-                class="form-control"
-                placeholder="Your Message *"
-                style="width: 100%; height: 150px"
-              ></textarea>
-            </div>
-          </div>
-          <div class="container">
-            <div class="form-group">
-              <input
-                type="submit"
-                name="btnmessagesubmit"
-                class="btn btn-primary"
-                value="Send Message"
-              />
-            </div>
-            <input
-              type="hidden"
-              name="_next"
-              value="http://dineshsharma02.github.io/thanks.html"
-            />
-            <input
-              type="hidden"
-              name="_subject"
-              value="New portfolio message!"
-            />
+          <div class="form-group form-row-full">
+            <input type="hidden" name="_next" value="https://dineshsharma02.github.io/thanks.html" />
+            <input type="hidden" name="_subject" value="New portfolio message!" />
             <input type="hidden" name="_captcha" value="false" />
+            <button type="submit" class="btn-submit">Send message</button>
           </div>
         </div>
       </form>
     </div>
-    <hr>
-    <footer>
-      <div class="rounded-social-buttons">
-                        <a class="social-button facebook" href="https://www.facebook.com/profile.php?id=100027090671075" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a class="social-button instagram" href="https://www.instagram.com/dinesh.sharma02/" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a class="social-button linkedin" href="https://www.linkedin.com/in/dinesh02/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a class="social-button github" href="https://github.com/dineshsharma02/" target="_blank"><i class="fab fa-github"></i></a> 
-                    </div>
-                    
-    </footer>
+  </section>
 
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-left">© 2026 Dinesh Sharma. All rights reserved.</div>
+    <div class="footer-right">
+      <!-- <span class="pulse-dot"></span> -->
+      <!-- <span>Available for opportunities</span> -->
+    </div>
+  </footer>
 
-  </body>
+  <script>
+    (function () {
+      // Mobile nav toggle (show/hide links when menu button clicked)
+      var nav = document.getElementById('mainNav');
+      var navLinks = document.querySelector('.nav-links');
+      var navToggle = document.getElementById('navToggle');
+      if (navToggle && navLinks && nav) {
+        navToggle.addEventListener('click', function () {
+          var isOpen = nav.classList.toggle('open');
+          navToggle.textContent = isOpen ? 'Close' : 'Menu';
+          navToggle.setAttribute('aria-expanded', isOpen);
+        });
+        navLinks.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', function () {
+            nav.classList.remove('open');
+            navToggle.textContent = 'Menu';
+            navToggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      // Fade-in on scroll
+      var fadeEls = document.querySelectorAll('.fade-in');
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+      fadeEls.forEach(function (el) {
+        observer.observe(el);
+      });
+
+      // Skill bars: animate once when skills section is in view
+      var skillsGrid = document.getElementById('skillsGrid');
+      if (skillsGrid) {
+        var skillObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              var cells = skillsGrid.querySelectorAll('.skill-cell');
+              cells.forEach(function (cell) { cell.classList.add('visible'); });
+              skillObserver.disconnect();
+            }
+          });
+        }, { threshold: 0.2 });
+
+        skillObserver.observe(skillsGrid);
+      }
+    })();
+  </script>
+</body>
 </html>
